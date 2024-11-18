@@ -1,0 +1,292 @@
+/* C:\Users\joshu\AppData\Roaming\Zettlr\images */
+:root {
+  /* --system-accent-color: #1f94d6;
+  --system-accent-color-contrast: #333; */
+  /* --background-image: linear-gradient(160deg, #03001e, #7303c0, #ec38bc, #fdeff9); */
+  --background-image: url("images/SWColorado.jpg");
+  --background-color: #333;
+  --background-color-transparent: #3338;
+  --background-color-transparent-active: #ccc4;
+  --editor-background-color: #111c;
+  --blur: blur(10px);
+  --color-gradient: linear-gradient(45deg, #7303c0, var(--system-accent-color));
+  --border-radius: 8px;
+  --border-radius-small: 4px;
+  --editor-blur: blur(20px);
+  --text-shadow: 1px 1px 2px rgba(0,0,0,0.5)
+}
+
+/*** Makes this editor more usable ***/
+#custom-css * {
+  caret-color: var(--system-accent-color);
+}
+
+/*** General Changes ***/
+/* Text shadow */
+#component-container, #sidebar-tab-container, .tab-container .filename {
+  text-shadow: var(--text-shadow);
+}
+
+/* Selection and cursor */
+.cm-selectionBackground, .cm-cursor-primary { /* Doesn't work in table + border-radius */
+  border-radius: var(--border-radius-small);
+  background-image: var(--color-gradient) !important;
+  background-color: var(--system-accent-color) !important;
+}
+
+/*** Basic styling ***/
+/* Background */
+#window-content {
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center; 
+}
+
+.view {
+  border: none !important;
+  border-radius: var(--border-radius);
+}
+
+.editor-pane {
+  background-color: var(--editor-background-color) !important;
+  backdrop-filter: var(--editor-blur);
+}
+
+.main-editor-wrapper {
+  background: none !important;
+}
+
+/* File manager */
+.file-manager-filter {
+  margin: .5rem;
+  /* Windows specific? */
+  overflow: hidden;
+  border: none !important;
+  border-radius: var(--border-radius);
+}
+
+.file-manager-filter-input {
+  height: 100% !important; /* Windows specific? */
+  background-color: var(--background-color-transparent) !important;
+  backdrop-filter: var(--blur);
+}
+
+/* System tablist */
+.system-tablist {
+  height: 22px;
+  margin: .5rem;
+  padding: 0 !important;
+  border-radius: var(--border-radius);
+  background-color: var(--background-color-transparent) !important;
+  backdrop-filter: var(--blur);
+}
+
+.system-tab {
+  border: none !important;
+  background: none !important;
+}
+
+.system-tab.active {
+  background-color: var(--background-color-transparent-active) !important;
+  border-radius: var(--border-radius);
+}
+
+/* Tabs */
+.tab-container { /* Shadow or line for separation + not centered on Mac */
+  height: 35px !important; /* Temporary value */
+  background: none !important;
+  border: none !important;
+  /* box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5); */
+}
+
+.tab-container > * { 
+  max-width: 200px; /* Check if needed for Windows otherwise delete */
+  margin: 1px;
+  font-size: 13px !important;
+  align-items: center;
+  background: none !important;
+  border: none !important;
+  border-radius: var(--border-radius);
+  box-shadow: none !important; /* It's barely noticable. Needed? */
+}
+
+.tab-container .active {
+  background-color: var(--system-accent-color) !important;
+}
+
+.tab-container > *:not(.active):hover {
+  background-color: var(--background-color-transparent) !important;
+}
+
+.tab-container .close {
+  font-size: 0 !important;
+  background: none !important;
+}
+
+.tab-container > * .close::before {
+  content: "✕";
+  font-size: 15px !important;
+  opacity: 0;
+  transition: .2s color ease, .2s opacity ease;
+}
+
+.tab-container > *:hover .close::before {
+  opacity: 1;
+}
+
+.tab-container .close:hover::before {
+  color: red;
+}
+
+/* Gutter */
+.cm-gutterElement > span {
+  visibility: hidden;
+}
+
+.cm-gutterElement:first-child {
+  display: none !important;
+}
+
+.cm-gutterElement > span[title="Fold line"]::before {
+  content: "▼";
+  visibility: visible;
+}
+
+.cm-gutterElement > span[title="Unfold line"]::before {
+  content: "▶︎";
+  visibility: visible;
+}
+
+/* Statusbar at bottom */
+.cm-panels, .cm-statusbar {
+  background: none !important;
+}
+
+/*** Inside Editor ***/
+/* Highlight with accent color */
+.cm-code-mark, .cm-url, .cm-link, .cm-code-mark, .cm-zkn-tag, .cm-zkn-link {
+  color: var(--system-accent-color) !important;
+}
+
+/* Tables */
+table { /* Is there a better way? */
+  border-radius: var(--border-radius) !important;
+  overflow: hidden !important;
+}
+
+.table-helper-add-button {
+  transition: .2s all ease;
+  /* backdrop-filter: var(--blur); */
+}
+
+.table-helper-add-button:hover {
+  opacity: .5;
+  scale: 1.5;
+}
+
+.table-helper-align-button-container, .table-helper-remove-button-container, .table-helper-save-status-button {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* .heading-tag {
+  display: none !important;
+} */
+
+/* Highlighted text */
+.cm-highlight, mark {
+  background-image: linear-gradient(to right, yellow, lime);
+  color: #333;
+  border-radius: var(--border-radius-small);
+}
+
+/* Images */
+img {
+  border-radius: var(--border-radius);
+}
+
+/* Mac specific styling */
+#file-manager {
+  border-top: none !important;
+}
+
+/* Windows specific styling */ /* TODO clean code */
+body.win32.dark #file-tree {
+  background: none;
+}
+
+#sidebar {
+  background: none !important;
+}
+
+#menubar {
+  /* height: 1px; */
+  background-image: url("images/logo.png");
+  transition: .2s height ease;
+}
+
+#toolbar:hover ~ #menubar {
+  background-color: red !important;
+}
+
+/* #menubar:hover {
+  height: 31px;
+  background-color: red !important;
+} */
+
+#menubar * {
+  border-radius: var(--border-radius-small);
+}
+
+#toolbar {
+  justify-content: left !important;
+}
+
+#toolbar .spacer, #toolbar .spacer-3x {
+  flex-grow: 0 !important;
+}
+
+#toolbar *, .application-menu, .popover {
+  border-radius: var(--border-radius) !important;
+}
+
+#toolbar-toggle-file-manager {
+  display: flex;
+}
+
+#toolbar-document-info * {
+  white-space: nowrap;
+}
+
+.application-menu, .popover {
+  background-color: #333b !important;
+  backdrop-filter: var(--blur);
+}
+
+/* .form-control *, .popover button {
+  border-radius: var(--border-radius) !important;
+  border: none !important;
+  background-color: var(--background-color-transparent) !important;
+} */
+
+.display-text {
+  border-radius: var(--border-radius-small);
+}
+
+/* WIP */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #14141e;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(45deg, #7303c0, #ec38bc);
+  border-radius: 8px;
+}
