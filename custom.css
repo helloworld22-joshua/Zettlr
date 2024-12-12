@@ -1,18 +1,20 @@
-/* C:\Users\joshu\AppData\Roaming\Zettlr\images */
+/* Windows: C:\Users\[user name]\AppData\Roaming\Zettlr\images */
+/* Mac: /Users/[user name]/Library/Application Support/Zettlr/images */
+
 :root {
-  /* --system-accent-color: #1f94d6;
-  --system-accent-color-contrast: #333; */
+  /* --system-accent-color: #1f94d6; */
+  /* --system-accent-color-contrast: #333; */
   /* --background-image: linear-gradient(160deg, #03001e, #7303c0, #ec38bc, #fdeff9); */
   --background-image: url("images/SWColorado.jpg");
   --background-color: #333;
   --background-color-transparent: #3338;
   --background-color-transparent-active: #ccc4;
   --editor-background-color: #111c;
-  --blur: blur(10px);
   --color-gradient: linear-gradient(45deg, #7303c0, var(--system-accent-color));
+  --blur: blur(10px);
+  --editor-blur: blur(20px);
   --border-radius: 8px;
   --border-radius-small: 4px;
-  --editor-blur: blur(20px);
   --text-shadow: 1px 1px 2px rgba(0,0,0,0.5)
 }
 
@@ -34,11 +36,23 @@
   background-color: red !important;
 }
 
+/* Inputs */
+.form-control {
+  margin: .3rem 0;
+}
+
+#field-input-, #form-select-, .input-text-button-group {
+  /* background: none !important; */
+  margin: .2rem 0;
+  background-color: var(--background-color-transparent-active) !important;
+  border: none !important;
+}
+
 /*** Basic styling ***/
 /* Toolbar */
 #toolbar {
   height: 2.2rem !important;
-  padding-right: 4px !important; /* TODO: Looks odd on Windows */
+  padding-right: 4px !important; /* TODO: Looks odd on Windows but good on Mac */
   gap: 0 !important;
 }
 
@@ -46,8 +60,12 @@
   border-radius: var(--border-radius) !important;
 }
 
+.popover-arrow {
+  border: none !important; /* TODO: Mac specific? */
+}
+
 #toolbar-toggle-file-manager > *, .toolbar-group > * {
-  width: 2.3rem;
+  width: 2.5rem;
   height: 1.7rem;
   display: flex;
   justify-content: center;
@@ -55,7 +73,7 @@
 }
 
 #toolbar-toggle-file-manager {
-  display: flex; /* TODO: Windows only? */
+  display: flex; /* TODO: Windows only? Yes */
 }
 
 #toolbar .spacer-1x {
@@ -63,7 +81,7 @@
 }
 
 #toolbar .spacer-3x {
-  min-width: 3rem; /* TODO: No effect on Windows */
+  min-width: 3rem; /* TODO: No effect on Windows. Same for Mac */
 }
 
 #toolbar .toolbar-text {
@@ -97,26 +115,38 @@
 
 /* File manager */
 .file-manager-filter { /* TODO: Windows only? */
-  height: 25px !important;
+  height: 25px !important; /* Only thing with effect on mac */
+  padding: 0 !important; /* TODO: Fix on Mac. Look good on windows? */
   overflow: hidden; /* Changes on Windows */
   border: none !important; /* Changes on Windows */
   border-radius: var(--border-radius); /* Changes on Windows */
 }
 
-.file-manager-filter-input { /* TODO: Windows only? */
-  height: 100% !important; /* Changes on Windows */
-  background-color: var(--background-color-transparent) !important; /* Changes on Windows */
-  backdrop-filter: var(--blur); /* Changes on Windows */
+.file-manager-filter-input { /* TODO: Windows only? No */
+  height: 100% !important;
+  background-color: var(--background-color-transparent) !important;
+  backdrop-filter: var(--blur);
 }
 
 .display-text {
   border-radius: var(--border-radius-small);
 }
 
+/* Global search */
+#field-inputquery-input, #field-inputrestrict-to-dir-input, .input-text-button-group {
+  background-color: var(--background-color-transparent) !important;
+  backdrop-filter: var(--blur);
+  border: none !important;
+}
+
+#form-buttonundefined {
+  margin: 0 .2rem;
+}
+
 /* System tablist */
 .system-tablist {
   height: 25px;
-  padding: 0 !important; /* TODO: No effect on Windows */
+  padding: 0 !important; /* Mac only */
   border-radius: var(--border-radius);
   background-color: var(--background-color-transparent) !important;
   backdrop-filter: var(--blur);
@@ -126,8 +156,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none !important; /* TODO: Windows only? */
-  background: none !important; /* TODO: Windows only? */
+  border: none !important; /* TODO: Windows only? No effect on Mac */
+  background: none !important; /* TODO: Windows only? No effect on Mac */
 }
 
 .system-tab.active {
@@ -139,17 +169,15 @@
 .tab-container { /* TODO: Shadow or line for separation? */
   height: 33px !important; /* TODO: Close button not centered otherwise */
   background: none !important;
-  border: none !important; /* TODO: No effect on Windows */
+  border: none !important; /* Mac only */
   /* box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5); */
 }
 
 .tab-container div[role="tab"] { 
-  max-width: 200px; /* TODO: Check if needed for Windows otherwise delete: Not needed! */
   margin: 1px;
-  padding-left: 25px !important; /* TODO: Windows only, problems on Mac? */
+  /* padding-left: 25px !important; */ /* TODO: Windows only, problems on Mac? Yes. Find another way */
   font-size: 13px !important;
-  align-items: center; /* TODO: No effect on Windows */
-  background: none !important; /* TODO: No effect on Windows */
+  background: none !important; /* Mac only */
   border: none !important;
   border-radius: var(--border-radius);
   box-shadow: none !important; /* TODO: It's barely noticable. Needed? */
@@ -181,6 +209,12 @@
 
 .tab-container .close:hover::before {
   color: red;
+}
+
+.document-tablist-wrapper .scroller {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Gutter */
