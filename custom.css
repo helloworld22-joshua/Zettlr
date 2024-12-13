@@ -1,6 +1,3 @@
-/* Windows: C:\Users\[user name]\AppData\Roaming\Zettlr\images */
-/* Mac: /Users/[user name]/Library/Application Support/Zettlr/images */
-
 :root {
   /* --system-accent-color: #1f94d6; */
   /* --system-accent-color-contrast: #333; */
@@ -33,7 +30,8 @@
 .cm-selectionBackground, .cm-cursor-primary { /* TODO: Doesn't work in table + border-radius + dif. color */
   border-radius: var(--border-radius-small);
   /* background-image: var(--color-gradient) !important; */
-  background-color: red !important;
+  background-color: #333 !important;
+  box-shadow: 0 0 5px 1px var(--system-accent-color);
 }
 
 /* Inputs */
@@ -70,10 +68,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-#toolbar-toggle-file-manager {
-  display: flex; /* TODO: Windows only? Yes */
 }
 
 #toolbar .spacer-1x {
@@ -114,18 +108,22 @@
 }
 
 /* File manager */
-.file-manager-filter { /* TODO: Windows only? */
+.file-manager-filter {
   height: 25px !important; /* Only thing with effect on mac */
   padding: 0 !important; /* TODO: Fix on Mac. Look good on windows? */
-  overflow: hidden; /* Changes on Windows */
-  border: none !important; /* Changes on Windows */
-  border-radius: var(--border-radius); /* Changes on Windows */
+  overflow: hidden; /* Windows only */
+  border: none !important; /* Windows only */
+  border-radius: var(--border-radius); /* Windows only */
 }
 
-.file-manager-filter-input { /* TODO: Windows only? No */
+.file-manager-filter-input {
   height: 100% !important;
   background-color: var(--background-color-transparent) !important;
   backdrop-filter: var(--blur);
+}
+
+#directories-dirs-header {
+  color: #f0f0f0 !important;
 }
 
 .display-text {
@@ -156,8 +154,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none !important; /* TODO: Windows only? No effect on Mac */
-  background: none !important; /* TODO: Windows only? No effect on Mac */
+  border: none !important; /* Windows only */
+  background: none !important; /* Windows only */
 }
 
 .system-tab.active {
@@ -254,7 +252,7 @@ table { /* Is there a better way? */
 }
 
 .table-helper-add-button {
-  transition: .2s all ease; /* TODO: Something buggy. Maybe only opacity and scale */
+  transition: .2s all ease; /* TODO: Sometimes buggy. Maybe only opacity and scale */
 }
 
 .table-helper-add-button:hover {
@@ -303,6 +301,10 @@ body.win32.dark #file-tree, body.win32.dark #sidebar {
   height: 31px;
   background-color: red !important;
 } */
+
+#toolbar-toggle-file-manager {
+  display: flex;
+}
 
 .application-menu, .popover {
   background-color: #333b !important;
