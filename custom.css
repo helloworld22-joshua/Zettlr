@@ -7,6 +7,8 @@
   --background-color-transparent: #3338;
   --background-color-transparent-active: #ccc4;
   --editor-background-color: #111c;
+  --toolbar-background-color: #111;
+  --toolbar-button-color: #333;
   --color-gradient: linear-gradient(45deg, #7303c0, var(--system-accent-color));
   --blur: blur(10px);
   --editor-blur: blur(20px);
@@ -52,6 +54,7 @@
   height: 2.2rem !important;
   padding-right: 4px !important; /* TODO: Looks odd on Windows but good on Mac */
   gap: 0 !important;
+  background-color: var(--toolbar-background-color) !important;
 }
 
 #toolbar *, .application-menu, .popover {
@@ -68,6 +71,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#toolbar-toggle-file-manager.active {
+  background-color: var(--toolbar-button-color) !important;
+}
+
+#toolbar-toggle-file-manager .active {
+  background-color: var(--toolbar-background-color) !important;
+}
+
+#toolbar-toggle-sidebar.active {
+  background-color: var(--toolbar-button-color) !important;
 }
 
 #toolbar .spacer-1x {
