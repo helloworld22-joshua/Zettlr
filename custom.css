@@ -14,6 +14,7 @@
   --editor-blur: blur(20px);
   --border-radius: 8px;
   --border-radius-small: 4px;
+  --font-family: /* 'Courier New',  */monospace;
   --text-shadow: 1px 1px 2px rgba(0,0,0,0.5)
 }
 
@@ -23,6 +24,11 @@
 }
 
 /*** General Changes ***/
+/* Default font */
+/* .cm-content  */* { /* Un/comment ".cm-content" to toggle editor only or entire UI */
+  font-family: var(--font-family);
+}
+
 /* Text shadow */
 #component-container, #sidebar-tab-container, .tab-container .filename {
   text-shadow: var(--text-shadow);
