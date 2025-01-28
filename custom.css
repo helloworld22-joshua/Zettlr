@@ -135,7 +135,7 @@
   background-color: transparent !important;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .main-editor-wrapper .cm-scroller {
       padding: 0 !important;
   }
