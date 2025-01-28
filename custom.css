@@ -14,8 +14,8 @@
   --editor-blur: blur(20px);
   --border-radius: 8px;
   --border-radius-small: 4px;
-  --font-family: /* 'Courier New',  */monospace;
-  --text-shadow: 1px 1px 2px rgba(0,0,0,0.5)
+  --font-family: /* 'Courier New',  monospace*/;
+  --text-shadow: 1px 1px 2px hsla(0, 0%, 0%, 0.5);
 }
 
 /*** Makes this editor more usable ***/
@@ -60,7 +60,18 @@
   height: 2.2rem !important;
   padding-right: 4px !important; /* TODO: Looks odd on Windows but good on Mac */
   gap: 0 !important;
+  overflow-x: scroll;
   background-color: var(--toolbar-background-color) !important;
+}
+
+#toolbar::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: inherit;
+  left: 0;
+  z-index: 1;
+  box-shadow: inset 6rem 0px 1rem -1rem var(--toolbar-background-color);
 }
 
 #toolbar *, .application-menu, .popover {
@@ -95,10 +106,6 @@
   flex-grow: 0 !important;
 }
 
-#toolbar .spacer-3x {
-  min-width: 3rem; /* TODO: No effect on Windows. Same for Mac */
-}
-
 #toolbar .toolbar-text {
   width: auto !important;
 }
@@ -126,6 +133,12 @@
 
 .empty-pane {
   background-color: transparent !important;
+}
+
+@media screen and (max-width: 500px) {
+    .main-editor-wrapper .cm-scroller {
+      padding: 0 !important;
+  }
 }
 
 /* File manager */
@@ -164,7 +177,6 @@
 
 /* System tablist */
 .system-tablist {
-  height: 25px;
   padding: 0 !important; /* Mac only */
   border-radius: var(--border-radius);
   background-color: var(--background-color-transparent) !important;
@@ -173,6 +185,7 @@
 
 .system-tab {
   display: flex;
+  height: 25px !important;
   justify-content: center;
   align-items: center;
   border: none !important; /* Windows only */
@@ -261,6 +274,40 @@
 }
 
 /*** Inside Editor ***/
+/* Heading tag roman numerals */
+.heading-tag span {
+  font-family: serif;
+  font-size: 0 !important;
+}
+
+.heading-tag span::before {
+  font-size: 25px !important;
+}
+
+.size-header-1 .heading-tag span::before {
+  content: "I";
+}
+
+.size-header-2 .heading-tag span::before {
+  content: "II";
+}
+
+.size-header-3 .heading-tag span::before {
+  content: "III";
+}
+
+.size-header-4 .heading-tag span::before {
+  content: "IV";
+}
+
+.size-header-5 .heading-tag span::before {
+  content: "V";
+}
+
+.size-header-6 .heading-tag span::before {
+  content: "VI";
+}
+
 /* Highlight with accent color */
 .cm-code-mark, .cm-url, .cm-link, .cm-code-mark, .cm-zkn-tag, .cm-zkn-link {
   color: var(--system-accent-color) !important;
