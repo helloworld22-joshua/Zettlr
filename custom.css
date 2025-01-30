@@ -37,9 +37,15 @@
 /* Selection and cursor */
 .cm-selectionBackground, .cm-cursor-primary { /* TODO: Doesn't work in table + border-radius + dif. color */
   border-radius: var(--border-radius-small);
-  /* background-image: var(--color-gradient) !important; */
-  background-color: #333 !important;
-  box-shadow: 0 0 5px 1px var(--system-accent-color);
+  background-color: #414141 !important;
+}
+
+.cm-cursor-primary {
+  box-shadow: 0 0 3px 1px var(--system-accent-color);
+}
+
+.cm-selectionBackground {
+  box-shadow: 0 3px 4px var(--system-accent-color);
 }
 
 /* Inputs */
